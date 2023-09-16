@@ -1,1 +1,3 @@
-# ASE230-Team-Website
+Nat Levesque
+Amrutha Rao
+Josh Lohner
