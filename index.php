@@ -1,10 +1,5 @@
-<?php
-$infoArray = array(
-	array("Joshua Lohner", "Awesome", "Link to site"),
-	array("Amrutha Rao", "Very cool", "Link to site"),
-	array("Doug Broughton", "Amazing", "Link to site"),
-);
-?>
+<!-- http://localhost/ASE230-Team-Website/index.php -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,21 +7,21 @@ $infoArray = array(
 	<title>Our amazing team</title>
 
 	<!-- Meta -->
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Your name's resume">
-	<meta name="author" content="Your name">
-	<link rel="shortcut icon" href="favicon.ico">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Your name's resume">
+<meta name="author" content="Your name">
+<link rel="shortcut icon" href="favicon.ico">
 
-	<!-- Google Font -->
-	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
 
-	<!-- FontAwesome JS-->
-	<script defer src="assets/fontawesome/js/all.min.js"></script>
+<!-- FontAwesome JS-->
+<script defer src="assets/fontawesome/js/all.min.js"></script>
 
-	<!-- Theme CSS -->
-	<link id="theme-style" rel="stylesheet" href="assets/css/pillar-1.css">
+<!-- Theme CSS -->
+<link id="theme-style" rel="stylesheet" href="assets/css/pillar-1.css">
 
 
 </head>
@@ -36,33 +31,29 @@ $infoArray = array(
 		<div class="resume-wrapper-inner mx-auto text-start bg-white shadow-lg">
 			<h1 class="py-4 text-center">OUR AMAZING TEAM</h1>
 			<?php
+			// Sample member data
+			$members = [
+				["name" => "Josh Lohner", "age" => 22, "email" => "lohnerjosh@gmail.com"],
+				["name" => "Amrutha Rao", "age" => 22, "email" => "roaa1@nku.edu"],
+				["name" => "Doug Broughton", "age" => 22, "email" => "boughtond1@nku.edu"],
+			];
 
+			// Function to display member information as a card
+			function displayMemberCard($member, $index)
+			{
+				// HTML template for the member card
+				echo '<div class="member-card">';
+				echo '<h2>Member #' . ($index + 1) . '</h2>';
+				echo '<p>Name: ' . $member["name"] . '</p>';
+				echo '<p>Age: ' . $member["age"] . '</p>';
+				echo '<p>Email: ' . $member["email"] . '</p>';
+				echo '<a href="detail.php?id=' . $index . '">Link to page</a>';
+				echo '</div>';
+			}
 
-			for ($i = 0; $i < count($infoArray); $i++) {
-				$name = $infoArray[$i][0];
-				$description = $infoArray[$i][1];
-				$link = $infoArray[$i][2];
-				$identifier = $i;
-
-				echo '<header class="resume-header pt-4 pt-md-0">
-			    <div class="row">
-				    <div class="col-block col-md-auto resume-picture-holder text-center text-md-start">
-				        <img class="picture" src="assets/images/profile.jpg" alt="">
-				    </div><!--//col-->
-				    <div class="col">
-					    <div class="row p-4 justify-content-center justify-content-md-between">
-						    <div class="primary-info col-auto">
-								<h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">' . $name . '</h1>
-							    <div class="title mb-3">' . $description . '</div>
-								<a href="detail.php?id=' . $identifier . '" class="btn btn-secondary">See full profile</a>
-						    </div><!--//primary-info-->
-						    <div class="secondary-info col-auto mt-2">
-						    </div><!--//secondary-info-->
-					    </div><!--//row-->
-					    
-				    </div><!--//col-->
-			    </div><!--//row-->
-		    </header> ';
+			// Loop through the members and display their cards
+			foreach ($members as $index => $member) {
+				displayMemberCard($member, $index);
 			}
 			?>
 
